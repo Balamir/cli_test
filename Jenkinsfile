@@ -1,6 +1,10 @@
 node {
     currentStatus = "BASARILI"
     try {
+        stage("Checkout") {
+            // Checkout code from repository
+            checkout scm
+        }
         stage("Test Basladi") {
             sh "java -Dsbt.log.noformat=true -jar /var/jenkins_home/tools/org.jvnet.hudson.plugins.SbtPluginBuilder_SbtInstallation/sbt_default/bin/sbt-launch.jar test"
             echo "Test Bitti"
