@@ -29,7 +29,6 @@ node {
 			withDockerRegistry([credentialsId: '8e14d4bb-9d13-43da-9246-f69b64813696', url: 'https://index.docker.io/v1/']) {
 				stage ("build") {
 	                sh "cp /var/lib/jenkins/workspace/pipeline/target/scala-2.11/hello-scala-assembly-1.1.jar /var/lib/jenkins/workspace/pipeline/"
-	                sh "cp /var/lib/jenkins/workspace/pipeline/Dockerfile /var/lib/jenkins/workspace/pipeline/"
 
 			        def app = docker.build('abdullahceylan/hello-scala:v1', '.', '-f /var/lib/jenkins/workspace/pipeline/Dockerfile')
 		        }
