@@ -1,6 +1,9 @@
 node {
     currentStatus = "Success"
     try {
+        stage ('Check Docker') {
+            sh 'docker ps -a'
+        }
         stage("Checkout Basladi") {
             // Repo'dan kodu al
             checkout scm
