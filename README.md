@@ -1,2 +1,2 @@
 Docker jenkins test
-v6
+v7
