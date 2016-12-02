@@ -17,6 +17,10 @@ node {
             sh "java -Dsbt.log.noformat=true -jar /var/lib/jenkins/tools/org.jvnet.hudson.plugins.SbtPluginBuilder_SbtInstallation/sbt/bin/sbt-launch.jar assembly"
             echo "sbt-assembly bitti."
         }
+stage("Archive Artifact"){
+            archiveArtifacts '**/*.jar, Dockerfile'
+            echo "Archive Artifact bitti."
+        }
 
     } catch ( err ) {
         currentStatus = "BASARISIZ"
