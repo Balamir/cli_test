@@ -14,7 +14,7 @@ node {
         	stage "test"
 	            sh "java -Dsbt.log.noformat=true -jar /var/lib/jenkins/tools/org.jvnet.hudson.plugins.SbtPluginBuilder_SbtInstallation/sbt/bin/sbt-launch.jar test"
 	            echo "sbt-test ok"
-        	stage("assembly"){
+        	stage("assembly")
 	            sh "java -Dsbt.log.noformat=true -jar /var/lib/jenkins/tools/org.jvnet.hudson.plugins.SbtPluginBuilder_SbtInstallation/sbt/bin/sbt-launch.jar assembly"
 	            echo "sbt-assembly ok."
         }
