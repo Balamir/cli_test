@@ -1,7 +1,7 @@
 node {
-    currentStatus = "Success"
+    currentStatus = "BASARILI"
     try {
-        stage ('Check Docker') {
+        stage ('Docker Kontrolu') {
             sh 'docker ps -a'
         }
         stage("Checkout Basladi") {
@@ -9,17 +9,17 @@ node {
             checkout scm
             echo "Checkout Bitti"
         }
-        stage("Test Step") {
-            sh "java -Dsbt.log.noformat=true -jar /jenkins/tools/org.jvnet.hudson.plugins.SbtPluginBuilder_SbtInstallation/sbt/bin/sbt-launch.jar test"
-            echo "Test Finished"
+        stage("sbt-test") {
+            sh "java -Dsbt.log.noformat=true -jar /var/lib/jenkins/tools/org.jvnet.hudson.plugins.SbtPluginBuilder_SbtInstallation/sbt/bin/sbt-launch.jar test"
+            echo "sbt-test bitti"
         }
-        stage("Compile Step"){
-            sh "java -Dsbt.log.noformat=true -jar /jenkins/tools/org.jvnet.hudson.plugins.SbtPluginBuilder_SbtInstallation/sbt/bin/sbt-launch.jar assembly"
-            echo "Compile Finished."
+        stage("sbt-assembly"){
+            sh "java -Dsbt.log.noformat=true -jar /var/lib/jenkins/tools/org.jvnet.hudson.plugins.SbtPluginBuilder_SbtInstallation/sbt/bin/sbt-launch.jar assembly"
+            echo "sbt-assembly bitti."
         }
 
     } catch ( err ) {
-        currentStatus = "FAILED"
+        currentStatus = "BASARISIZ"
         echo currentStatus
     }
 }
