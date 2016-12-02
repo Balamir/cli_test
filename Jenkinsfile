@@ -30,7 +30,7 @@ node {
 				stage ("build") {
 	                sh "cp /var/lib/jenkins/workspace/pipeline/target/scala-2.11/hello-scala-assembly-1.1.jar /var/lib/jenkins/workspace/pipeline/"
 
-			        def app = docker.build('abdullahceylan/hello-scala:v1', '-f /var/lib/jenkins/workspace/pipeline/Dockerfile', '.')
+			        def app = docker.build('abdullahceylan/hello-scala:v1', '-f /var/lib/jenkins/workspace/pipeline/Dockerfile')
 		        }
 		    
 		        stage ("publish") {
