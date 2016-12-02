@@ -27,10 +27,10 @@ node {
         stage ("Docker Image")  {
 			// This step should not normally be used in your script. Consult the inline help for details.
 			withDockerRegistry([credentialsId: '8e14d4bb-9d13-43da-9246-f69b64813696', url: 'https://index.docker.io/v1/']) {
-				stage ("build") {
+				stage "build"
 	                sh "cp /var/lib/jenkins/workspace/pipeline/target/scala-2.11/hello-scala-assembly-1.1.jar /var/lib/jenkins/workspace/pipeline/"
 
-			        def app = docker.build('abdullahceylan/hello-scala:v1', '.', '-f /var/lib/jenkins/workspace/pipeline/Dockerfile')
+			        def app = docker.build('abdullahceylan/hello-scala:v1', '. -f /var/lib/jenkins/workspace/pipeline/Dockerfile')
 		        }
 		    
 		        stage ("publish") {
